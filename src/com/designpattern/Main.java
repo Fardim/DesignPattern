@@ -8,6 +8,14 @@ import com.designpattern.Strategy.Encryption.Sha256Encryption;
 import com.designpattern.Strategy.Filter.BlackAndWhiteFilter;
 import com.designpattern.Strategy.Filter.ContrastFilter;
 import com.designpattern.Strategy.ImageStorage;
+import com.designpattern.Template.AuditTrail;
+import com.designpattern.Template.Exercise.BeforeCloseTask;
+import com.designpattern.Template.Exercise.MessageWindow;
+import com.designpattern.Template.Exercise.ModalWindow;
+import com.designpattern.Template.Exercise.Window;
+import com.designpattern.Template.GenerateReport;
+import com.designpattern.Template.Task;
+import com.designpattern.Template.TransferMoneyTask;
 import com.designpattern.iterator.BrowseHistory;
 import com.designpattern.iterator.Iterator;
 import com.designpattern.iterator.Product;
@@ -23,14 +31,28 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*Strategy Pattern*/
-        ImageStorage imageStorage = new ImageStorage();
-        imageStorage.store("Fardim", new JpegCompressor(), new BlackAndWhiteFilter());
-        imageStorage.store("Kaiser", new PngCompressor(), new ContrastFilter());
+        /*Template Pattern*/
+        Task task = new TransferMoneyTask(new AuditTrail());
+        task.execute();
+        Task task2 = new GenerateReport(new AuditTrail());
+        task2.execute();
 
-        ChatClient client = new ChatClient();
-        client.sendMessage("hello kaiser", new Sha256Encryption());
-        client.sendMessage("hello Fardim", new Sha1Encryption());
+        Window messWindow = new MessageWindow(new BeforeCloseTask());
+        messWindow.closeWindow();
+
+        Window modalWindow = new ModalWindow(new BeforeCloseTask());
+        modalWindow.closeWindow();
+        /*Template Pattern*/
+
+
+        /*Strategy Pattern*/
+//        ImageStorage imageStorage = new ImageStorage();
+//        imageStorage.store("Fardim", new JpegCompressor(), new BlackAndWhiteFilter());
+//        imageStorage.store("Kaiser", new PngCompressor(), new ContrastFilter());
+//
+//        ChatClient client = new ChatClient();
+//        client.sendMessage("hello kaiser", new Sha256Encryption());
+//        client.sendMessage("hello Fardim", new Sha1Encryption());
         /*Strategy Pattern*/
 
 
