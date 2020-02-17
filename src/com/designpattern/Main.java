@@ -31,18 +31,24 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*Template Pattern*/
-        Task task = new TransferMoneyTask(new AuditTrail());
-        task.execute();
-        Task task2 = new GenerateReport(new AuditTrail());
-        task2.execute();
 
-        Window messWindow = new MessageWindow(new BeforeCloseTask());
-        messWindow.closeWindow();
 
-        Window modalWindow = new ModalWindow(new BeforeCloseTask());
-        modalWindow.closeWindow();
+        
         /*Template Pattern*/
+//        Task task = new TransferMoneyTask(new AuditTrail());
+//        task.execute();
+//        Task task2 = new GenerateReport(new AuditTrail());
+//        task2.execute();
+//
+//        Window messWindow = new MessageWindow(new BeforeCloseTask());
+//        messWindow.closeWindow();
+//
+//        Window modalWindow = new ModalWindow(new BeforeCloseTask());
+//        modalWindow.closeWindow();
+        /*Template Pattern*/
+
+
+//        ------------------------------------------------------------------------
 
 
         /*Strategy Pattern*/
@@ -56,6 +62,7 @@ public class Main {
         /*Strategy Pattern*/
 
 
+//----------------------------------------------------------------------
 
         /* Iterator Pattern */
 //        BrowseHistory history = new BrowseHistory();
