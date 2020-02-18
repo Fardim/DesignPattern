@@ -1,5 +1,11 @@
 package com.designpattern;
 
+import com.designpattern.Command.Fx.AddCustomerCommand;
+import com.designpattern.Command.Fx.Composite.BlackWhiteCommand;
+import com.designpattern.Command.Fx.Composite.CompositeCommand;
+import com.designpattern.Command.Fx.Composite.ResizeCommand;
+import com.designpattern.Command.Fx.CustomerService;
+import com.designpattern.Command.Fx.Fx.ButtonCommand;
 import com.designpattern.Strategy.ChatClient;
 import com.designpattern.Strategy.Compressor.JpegCompressor;
 import com.designpattern.Strategy.Compressor.PngCompressor;
@@ -31,9 +37,23 @@ public class Main {
 
     public static void main(String[] args) {
 
+        /*Command Pattern*/
+        CustomerService service = new CustomerService();
+        AddCustomerCommand customerCommand = new AddCustomerCommand(service);
+        ButtonCommand button = new ButtonCommand(customerCommand);
+        button.click();
+
+        CompositeCommand compCommand = new CompositeCommand();
+        compCommand.add(new AddCustomerCommand(service));
+        compCommand.add(new ResizeCommand());
+        compCommand.add(new BlackWhiteCommand());
+        compCommand.execute();
+        /*Command Pattern*/
 
 
-        
+//        ---------------------------------------------------------------------------
+
+
         /*Template Pattern*/
 //        Task task = new TransferMoneyTask(new AuditTrail());
 //        task.execute();
