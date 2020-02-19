@@ -6,6 +6,12 @@ import com.designpattern.Command.Fx.Composite.CompositeCommand;
 import com.designpattern.Command.Fx.Composite.ResizeCommand;
 import com.designpattern.Command.Fx.CustomerService;
 import com.designpattern.Command.Fx.Fx.ButtonCommand;
+import com.designpattern.Command.Fx.Undoable.BoldCommand;
+import com.designpattern.Command.Fx.Undoable.Document;
+import com.designpattern.Command.Fx.Undoable.UndoCommand;
+import com.designpattern.Command.Fx.VideoEditor.AddLabelCommand;
+import com.designpattern.Command.Fx.VideoEditor.VideoEditor;
+import com.designpattern.Command.Fx.VideoEditor.VideoResizeCommand;
 import com.designpattern.Strategy.ChatClient;
 import com.designpattern.Strategy.Compressor.JpegCompressor;
 import com.designpattern.Strategy.Compressor.PngCompressor;
@@ -28,6 +34,7 @@ import com.designpattern.iterator.Product;
 import com.designpattern.iterator.ProductCollection;
 import com.designpattern.memento.Editor;
 import com.designpattern.memento.EditorState;
+import com.designpattern.memento.History;
 import com.designpattern.state.BrushTool;
 import com.designpattern.state.Canvas;
 import com.designpattern.state.EraserTool;
@@ -48,6 +55,43 @@ public class Main {
         compCommand.add(new ResizeCommand());
         compCommand.add(new BlackWhiteCommand());
         compCommand.execute();
+
+
+        Document doc = new Document();
+        doc.setContent("Hello World");
+        com.designpattern.Command.Fx.Undoable.History history = new com.designpattern.Command.Fx.Undoable.History();
+        BoldCommand bcmd = new BoldCommand(doc, history);
+        UndoCommand undoCommand = new UndoCommand(history);
+        bcmd.execute();
+        System.out.println(doc.getContent());
+
+        undoCommand.execute();
+        System.out.println(doc.getContent());
+
+
+        VideoEditor video = new VideoEditor();
+        video.setSize(300);
+        video.setLabel("Fardim");
+
+        AddLabelCommand labelCommand = new AddLabelCommand(history, video);
+        labelCommand.setNewLabel("kaiser");
+        labelCommand.execute();
+        System.out.println(video.getLabel());
+        System.out.println(video.getSize());
+
+        VideoResizeCommand videoCommand = new VideoResizeCommand(history, video);
+        videoCommand.setNewSize(500);
+        videoCommand.execute();
+        System.out.println(video.getLabel());
+        System.out.println(video.getSize());
+
+
+        undoCommand.execute();
+        System.out.println(video.getLabel());
+        System.out.println(video.getSize());
+        undoCommand.execute();
+        System.out.println(video.getLabel());
+        System.out.println(video.getSize());
         /*Command Pattern*/
 
 
