@@ -1,97 +1,98 @@
 package com.designpattern;
 
-import com.designpattern.Command.Fx.AddCustomerCommand;
-import com.designpattern.Command.Fx.Composite.BlackWhiteCommand;
-import com.designpattern.Command.Fx.Composite.CompositeCommand;
-import com.designpattern.Command.Fx.Composite.ResizeCommand;
-import com.designpattern.Command.Fx.CustomerService;
-import com.designpattern.Command.Fx.Fx.ButtonCommand;
-import com.designpattern.Command.Fx.Undoable.BoldCommand;
-import com.designpattern.Command.Fx.Undoable.Document;
-import com.designpattern.Command.Fx.Undoable.UndoCommand;
-import com.designpattern.Command.Fx.VideoEditor.AddLabelCommand;
-import com.designpattern.Command.Fx.VideoEditor.VideoEditor;
-import com.designpattern.Command.Fx.VideoEditor.VideoResizeCommand;
-import com.designpattern.Strategy.ChatClient;
-import com.designpattern.Strategy.Compressor.JpegCompressor;
-import com.designpattern.Strategy.Compressor.PngCompressor;
-import com.designpattern.Strategy.Encryption.Sha1Encryption;
-import com.designpattern.Strategy.Encryption.Sha256Encryption;
-import com.designpattern.Strategy.Filter.BlackAndWhiteFilter;
-import com.designpattern.Strategy.Filter.ContrastFilter;
-import com.designpattern.Strategy.ImageStorage;
-import com.designpattern.Template.AuditTrail;
-import com.designpattern.Template.Exercise.BeforeCloseTask;
-import com.designpattern.Template.Exercise.MessageWindow;
-import com.designpattern.Template.Exercise.ModalWindow;
-import com.designpattern.Template.Exercise.Window;
-import com.designpattern.Template.GenerateReport;
-import com.designpattern.Template.Task;
-import com.designpattern.Template.TransferMoneyTask;
-import com.designpattern.iterator.BrowseHistory;
-import com.designpattern.iterator.Iterator;
-import com.designpattern.iterator.Product;
-import com.designpattern.iterator.ProductCollection;
-import com.designpattern.memento.Editor;
-import com.designpattern.memento.EditorState;
-import com.designpattern.memento.History;
-import com.designpattern.state.BrushTool;
-import com.designpattern.state.Canvas;
-import com.designpattern.state.EraserTool;
-import com.designpattern.state.SelectionTool;
+import com.designpattern.Command.AddCustomerCommand;
+import com.designpattern.Command.Composite.BlackWhiteCommand;
+import com.designpattern.Command.Composite.CompositeCommand;
+import com.designpattern.Command.Composite.ResizeCommand;
+import com.designpattern.Command.CustomerService;
+import com.designpattern.Command.Fx.ButtonCommand;
+import com.designpattern.Command.Undoable.BoldCommand;
+import com.designpattern.Command.Undoable.Document;
+import com.designpattern.Command.Undoable.UndoCommand;
+import com.designpattern.Command.VideoEditor.AddLabelCommand;
+import com.designpattern.Command.VideoEditor.VideoEditor;
+import com.designpattern.Command.VideoEditor.VideoResizeCommand;
+import com.designpattern.observer.Chart;
+import com.designpattern.observer.DataSource;
+import com.designpattern.observer.Exercise.StatusBar;
+import com.designpattern.observer.Exercise.StockDataSource;
+import com.designpattern.observer.Exercise.StockListView;
+import com.designpattern.observer.SpreadSheet;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        /*Observer Pattern*/
+        DataSource source = new DataSource();
+        Chart chart = new Chart(source);
+        SpreadSheet sheet1 = new SpreadSheet(source);
+        SpreadSheet sheet2 = new SpreadSheet(source);
+        source.addObserver(chart);
+        source.addObserver(sheet1);
+        source.addObserver(sheet2);
+        source.setValue(20);
+
+        StockDataSource stockSource = new StockDataSource();
+        StatusBar bar = new StatusBar(stockSource);
+        StockListView listView = new StockListView(stockSource);
+        stockSource.addObserver(bar);
+        stockSource.addObserver(listView);
+        stockSource.setPrice(300);
+
+        /*Observer Pattern*/
+
+
+//        -------------------------------------------------------------------------
+
         /*Command Pattern*/
-        CustomerService service = new CustomerService();
-        AddCustomerCommand customerCommand = new AddCustomerCommand(service);
-        ButtonCommand button = new ButtonCommand(customerCommand);
-        button.click();
-
-        CompositeCommand compCommand = new CompositeCommand();
-        compCommand.add(new AddCustomerCommand(service));
-        compCommand.add(new ResizeCommand());
-        compCommand.add(new BlackWhiteCommand());
-        compCommand.execute();
-
-
-        Document doc = new Document();
-        doc.setContent("Hello World");
-        com.designpattern.Command.Fx.Undoable.History history = new com.designpattern.Command.Fx.Undoable.History();
-        BoldCommand bcmd = new BoldCommand(doc, history);
-        UndoCommand undoCommand = new UndoCommand(history);
-        bcmd.execute();
-        System.out.println(doc.getContent());
-
-        undoCommand.execute();
-        System.out.println(doc.getContent());
-
-
-        VideoEditor video = new VideoEditor();
-        video.setSize(300);
-        video.setLabel("Fardim");
-
-        AddLabelCommand labelCommand = new AddLabelCommand(history, video);
-        labelCommand.setNewLabel("kaiser");
-        labelCommand.execute();
-        System.out.println(video.getLabel());
-        System.out.println(video.getSize());
-
-        VideoResizeCommand videoCommand = new VideoResizeCommand(history, video);
-        videoCommand.setNewSize(500);
-        videoCommand.execute();
-        System.out.println(video.getLabel());
-        System.out.println(video.getSize());
-
-
-        undoCommand.execute();
-        System.out.println(video.getLabel());
-        System.out.println(video.getSize());
-        undoCommand.execute();
-        System.out.println(video.getLabel());
-        System.out.println(video.getSize());
+//        CustomerService service = new CustomerService();
+//        AddCustomerCommand customerCommand = new AddCustomerCommand(service);
+//        ButtonCommand button = new ButtonCommand(customerCommand);
+//        button.click();
+//
+//        CompositeCommand compCommand = new CompositeCommand();
+//        compCommand.add(new AddCustomerCommand(service));
+//        compCommand.add(new ResizeCommand());
+//        compCommand.add(new BlackWhiteCommand());
+//        compCommand.execute();
+//
+//
+//        Document doc = new Document();
+//        doc.setContent("Hello World");
+//        com.designpattern.Command.Undoable.History history = new com.designpattern.Command.Undoable.History();
+//        BoldCommand bcmd = new BoldCommand(doc, history);
+//        UndoCommand undoCommand = new UndoCommand(history);
+//        bcmd.execute();
+//        System.out.println(doc.getContent());
+//
+//        undoCommand.execute();
+//        System.out.println(doc.getContent());
+//
+//
+//        VideoEditor video = new VideoEditor();
+//        video.setSize(300);
+//        video.setLabel("Fardim");
+//
+//        AddLabelCommand labelCommand = new AddLabelCommand(history, video);
+//        labelCommand.setNewLabel("kaiser");
+//        labelCommand.execute();
+//        System.out.println(video.getLabel());
+//        System.out.println(video.getSize());
+//
+//        VideoResizeCommand videoCommand = new VideoResizeCommand(history, video);
+//        videoCommand.setNewSize(500);
+//        videoCommand.execute();
+//        System.out.println(video.getLabel());
+//        System.out.println(video.getSize());
+//
+//
+//        undoCommand.execute();
+//        System.out.println(video.getLabel());
+//        System.out.println(video.getSize());
+//        undoCommand.execute();
+//        System.out.println(video.getLabel());
+//        System.out.println(video.getSize());
         /*Command Pattern*/
 
 
