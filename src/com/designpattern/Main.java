@@ -12,6 +12,14 @@ import com.designpattern.Command.Undoable.UndoCommand;
 import com.designpattern.Command.VideoEditor.AddLabelCommand;
 import com.designpattern.Command.VideoEditor.VideoEditor;
 import com.designpattern.Command.VideoEditor.VideoResizeCommand;
+import com.designpattern.Template.AuditTrail;
+import com.designpattern.Template.GenerateReport;
+import com.designpattern.Template.Task;
+import com.designpattern.Template.TransferMoneyTask;
+import com.designpattern.mediator.ArticleDialogBox;
+import com.designpattern.mediator.DialogBox;
+import com.designpattern.mediator.Exercise.SignUpDialogBox;
+import com.designpattern.mediator.Observer.ArticleDialogBoxObs;
 import com.designpattern.observer.Chart;
 import com.designpattern.observer.DataSource;
 import com.designpattern.observer.Exercise.StatusBar;
@@ -23,22 +31,36 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*Observer Pattern*/
-        DataSource source = new DataSource();
-        Chart chart = new Chart(source);
-        SpreadSheet sheet1 = new SpreadSheet(source);
-        SpreadSheet sheet2 = new SpreadSheet(source);
-        source.addObserver(chart);
-        source.addObserver(sheet1);
-        source.addObserver(sheet2);
-        source.setValue(20);
+        /*Mediator Pattern*/
+//        ArticleDialogBox dialog = new ArticleDialogBox();
+//        dialog.simulateUserInteraction();
 
-        StockDataSource stockSource = new StockDataSource();
-        StatusBar bar = new StatusBar(stockSource);
-        StockListView listView = new StockListView(stockSource);
-        stockSource.addObserver(bar);
-        stockSource.addObserver(listView);
-        stockSource.setPrice(300);
+//        ArticleDialogBoxObs dialogObs = new ArticleDialogBoxObs();
+//        dialogObs.simulateUserInteraction();
+        SignUpDialogBox box = new SignUpDialogBox();
+        box.simulation();
+        /*Mediator Pattern*/
+
+
+//        -------------------------------------------------------------
+
+
+        /*Observer Pattern*/
+//        DataSource source = new DataSource();
+//        Chart chart = new Chart(source);
+//        SpreadSheet sheet1 = new SpreadSheet(source);
+//        SpreadSheet sheet2 = new SpreadSheet(source);
+//        source.addObserver(chart);
+//        source.addObserver(sheet1);
+//        source.addObserver(sheet2);
+//        source.setValue(20);
+//
+//        StockDataSource stockSource = new StockDataSource();
+//        StatusBar bar = new StatusBar(stockSource);
+//        StockListView listView = new StockListView(stockSource);
+//        stockSource.addObserver(bar);
+//        stockSource.addObserver(listView);
+//        stockSource.setPrice(300);
 
         /*Observer Pattern*/
 
