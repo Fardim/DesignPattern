@@ -16,6 +16,8 @@ import com.designpattern.Template.AuditTrail;
 import com.designpattern.Template.GenerateReport;
 import com.designpattern.Template.Task;
 import com.designpattern.Template.TransferMoneyTask;
+import com.designpattern.chainOfResponsibility.*;
+import com.designpattern.chainOfResponsibility.Exercise.*;
 import com.designpattern.mediator.ArticleDialogBox;
 import com.designpattern.mediator.DialogBox;
 import com.designpattern.mediator.Exercise.SignUpDialogBox;
@@ -31,14 +33,42 @@ public class Main {
 
     public static void main(String[] args) {
 
+        /*Visitor Pattern*/
+        
+        /*Visitor Pattern*/
+
+
+//        --------------------------------------------------------------------
+
+        /*Chain of Responsibility Pattern*/
+//        Compressor compressor = new Compressor(null);
+//        Logger logger = new Logger(compressor);
+//        Encryptor encryptor = new Encryptor(logger);
+//        Authenticator authenticator = new Authenticator(encryptor);
+//        HttpRequest request = new HttpRequest("fardim", "1234");
+//        WebServer server = new WebServer(authenticator);
+//        server.handle(request);
+
+//        Quickbook quickbook = new Quickbook(null);
+//        ExcelSpreadSheet excel = new ExcelSpreadSheet(quickbook);
+//        NumberSpreadSheet numberSpreadSheet = new NumberSpreadSheet(excel);
+//        DataReader reader = new DataReader(numberSpreadSheet);
+//        Data data = new Data(new byte[] {});
+//        reader.importData(data);
+
+        /*Chain of Responsibility Pattern*/
+
+
+//        ----------------------------------------------------------------
+
         /*Mediator Pattern*/
 //        ArticleDialogBox dialog = new ArticleDialogBox();
 //        dialog.simulateUserInteraction();
-
+//
 //        ArticleDialogBoxObs dialogObs = new ArticleDialogBoxObs();
 //        dialogObs.simulateUserInteraction();
-        SignUpDialogBox box = new SignUpDialogBox();
-        box.simulation();
+//        SignUpDialogBox box = new SignUpDialogBox();
+//        box.simulation();
         /*Mediator Pattern*/
 
 
@@ -61,7 +91,6 @@ public class Main {
 //        stockSource.addObserver(bar);
 //        stockSource.addObserver(listView);
 //        stockSource.setPrice(300);
-
         /*Observer Pattern*/
 
 
