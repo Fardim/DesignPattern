@@ -28,13 +28,27 @@ import com.designpattern.observer.Exercise.StatusBar;
 import com.designpattern.observer.Exercise.StockDataSource;
 import com.designpattern.observer.Exercise.StockListView;
 import com.designpattern.observer.SpreadSheet;
+import com.designpattern.visitor.*;
+import com.designpattern.visitor.exercise.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
         /*Visitor Pattern*/
-        
+        HtmlDocument doc = new HtmlDocument();
+        doc.add(new AnchorNode());
+        doc.add(new HeadingNode());
+        doc.execute(new HighlightOperation());
+        doc.execute(new PlaintextOperation());
+
+        AudioEditor editor = new AudioEditor();
+        editor.add(new WavFile());
+        editor.add(new MP3File());
+        editor.execute(new NoiseReductionVisitor());
+        editor.execute(new ReverbVisitor());
+        editor.execute(new NormalizeVisitor());
+
         /*Visitor Pattern*/
 
 
