@@ -18,6 +18,11 @@ import com.designpattern.Template.Task;
 import com.designpattern.Template.TransferMoneyTask;
 import com.designpattern.chainOfResponsibility.*;
 import com.designpattern.chainOfResponsibility.Exercise.*;
+import com.designpattern.composite.Group;
+import com.designpattern.composite.Shape;
+import com.designpattern.composite.exercise.HumanResource;
+import com.designpattern.composite.exercise.Team;
+import com.designpattern.composite.exercise.Truck;
 import com.designpattern.mediator.ArticleDialogBox;
 import com.designpattern.mediator.DialogBox;
 import com.designpattern.mediator.Exercise.SignUpDialogBox;
@@ -35,19 +40,59 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*Visitor Pattern*/
-        HtmlDocument doc = new HtmlDocument();
-        doc.add(new AnchorNode());
-        doc.add(new HeadingNode());
-        doc.execute(new HighlightOperation());
-        doc.execute(new PlaintextOperation());
+        /*Composite Pattern*/
+//        Group group1 = new Group();
+//        group1.add(new Shape()); //square
+//        group1.add(new Shape()); //square
+//        group1.render();
+//
+//        Group group2 = new Group();
+//        group2.add(new Shape()); //circle
+//        group2.add(new Shape()); //circle
+//        group2.render();
+//
+//        Group group = new Group();
+//        group.add(group1);
+//        group.add(group2);
+//        group.render();
+//        group.move();
 
-        AudioEditor editor = new AudioEditor();
-        editor.add(new WavFile());
-        editor.add(new MP3File());
-        editor.execute(new NoiseReductionVisitor());
-        editor.execute(new ReverbVisitor());
-        editor.execute(new NormalizeVisitor());
+
+
+        Team subTeam1 = new Team();
+        subTeam1.add(new Truck());
+        subTeam1.add(new HumanResource());
+        subTeam1.add(new HumanResource());
+
+        Team subTeam2 = new Team();
+        subTeam2.add(new Truck());
+        subTeam2.add(new HumanResource());
+        subTeam2.add(new HumanResource());
+
+        Team team = new Team();
+        team.add(subTeam1);
+        team.add(subTeam2);
+
+        team.deploy();
+
+        /*Composite Pattern*/
+
+
+//        ------------------------------------------------------------
+
+        /*Visitor Pattern*/
+//        HtmlDocument doc = new HtmlDocument();
+//        doc.add(new AnchorNode());
+//        doc.add(new HeadingNode());
+//        doc.execute(new HighlightOperation());
+//        doc.execute(new PlaintextOperation());
+//
+//        AudioEditor editor = new AudioEditor();
+//        editor.add(new WavFile());
+//        editor.add(new MP3File());
+//        editor.execute(new NoiseReductionVisitor());
+//        editor.execute(new ReverbVisitor());
+//        editor.execute(new NormalizeVisitor());
 
         /*Visitor Pattern*/
 
