@@ -16,6 +16,15 @@ import com.designpattern.Template.AuditTrail;
 import com.designpattern.Template.GenerateReport;
 import com.designpattern.Template.Task;
 import com.designpattern.Template.TransferMoneyTask;
+import com.designpattern.adapter.CaramelFilter;
+import com.designpattern.adapter.Image;
+import com.designpattern.adapter.ImageView;
+import com.designpattern.adapter.VividFilter;
+import com.designpattern.adapter.avaFilters.Caramel;
+import com.designpattern.adapter.exercise.EmailClient;
+import com.designpattern.adapter.exercise.Gmail.GmailClient;
+import com.designpattern.adapter.exercise.GmailAdapter;
+import com.designpattern.adapter.exercise.Yahoo;
 import com.designpattern.chainOfResponsibility.*;
 import com.designpattern.chainOfResponsibility.Exercise.*;
 import com.designpattern.composite.Group;
@@ -23,6 +32,11 @@ import com.designpattern.composite.Shape;
 import com.designpattern.composite.exercise.HumanResource;
 import com.designpattern.composite.exercise.Team;
 import com.designpattern.composite.exercise.Truck;
+import com.designpattern.decorator.CloudStream;
+import com.designpattern.decorator.CompressedCloudStream;
+import com.designpattern.decorator.EncryptedCloudStream;
+import com.designpattern.decorator.Stream;
+import com.designpattern.decorator.exercise.Editor;
 import com.designpattern.mediator.ArticleDialogBox;
 import com.designpattern.mediator.DialogBox;
 import com.designpattern.mediator.Exercise.SignUpDialogBox;
@@ -39,6 +53,29 @@ import com.designpattern.visitor.exercise.*;
 public class Main {
 
     public static void main(String[] args) {
+
+        /*Decorator Pattern*/
+//        storeCreditCard(new CompressedCloudStream(new EncryptedCloudStream(new CloudStream())));
+//        Editor editor = new Editor();
+//        editor.openProject("...");
+        /*Decorator Pattern*/
+
+
+//        ---------------------------------------------------------------
+
+        /*Adapter Pattern*/
+//        ImageView view = new ImageView(new Image());
+//        view.apply(new VividFilter());
+//        view.apply(new CaramelFilter(new Caramel()));
+//
+//        EmailClient client = new EmailClient();
+//        client.addProvider(new Yahoo());
+//        client.addProvider(new GmailAdapter(new GmailClient()));
+//        client.downloadEmails();
+        /*Adapter Pattern*/
+
+
+//        ----------------------------------------------------------
 
         /*Composite Pattern*/
 //        Group group1 = new Group();
@@ -58,22 +95,21 @@ public class Main {
 //        group.move();
 
 
-
-        Team subTeam1 = new Team();
-        subTeam1.add(new Truck());
-        subTeam1.add(new HumanResource());
-        subTeam1.add(new HumanResource());
-
-        Team subTeam2 = new Team();
-        subTeam2.add(new Truck());
-        subTeam2.add(new HumanResource());
-        subTeam2.add(new HumanResource());
-
-        Team team = new Team();
-        team.add(subTeam1);
-        team.add(subTeam2);
-
-        team.deploy();
+//        Team subTeam1 = new Team();
+//        subTeam1.add(new Truck());
+//        subTeam1.add(new HumanResource());
+//        subTeam1.add(new HumanResource());
+//
+//        Team subTeam2 = new Team();
+//        subTeam2.add(new Truck());
+//        subTeam2.add(new HumanResource());
+//        subTeam2.add(new HumanResource());
+//
+//        Team team = new Team();
+//        team.add(subTeam1);
+//        team.add(subTeam2);
+//
+//        team.deploy();
 
         /*Composite Pattern*/
 
@@ -309,6 +345,10 @@ public class Main {
 //        editor.restore(history.pop());
 //        System.out.println(editor.getContent());
         /*Memento Pattern*/
+    }
+
+    public static void storeCreditCard(Stream stream) {
+        stream.write("2134-2233-3255-7787");
     }
     public static void DrawUIControl(UIControl control) {
         control.draw();
