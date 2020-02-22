@@ -60,12 +60,18 @@ public class Main {
 
     public static void main(String[] args) {
 
+        /*Flyweight Pattern*/
+
+        /*Flyweight Pattern*/
+
+//        ------------------------------------------------------------------
+
         /*Facade Pattern*/
 //        NotificationService service = new NotificationService();
 //        service.send("Hello facade", "target");
 //
-        TwitterService twitterService = new TwitterService("appkey", "secret");
-        List<Tweet> tweets = twitterService.getRecentTweets();
+//        TwitterService twitterService = new TwitterService("appkey", "secret");
+//        List<Tweet> tweets = twitterService.getRecentTweets();
         /*Facade Pattern*/
 
 
