@@ -37,6 +37,10 @@ import com.designpattern.decorator.CompressedCloudStream;
 import com.designpattern.decorator.EncryptedCloudStream;
 import com.designpattern.decorator.Stream;
 import com.designpattern.decorator.exercise.Editor;
+import com.designpattern.facade.*;
+import com.designpattern.facade.exercise.Tweet;
+import com.designpattern.facade.exercise.TwitterClient;
+import com.designpattern.facade.exercise.TwitterService;
 import com.designpattern.mediator.ArticleDialogBox;
 import com.designpattern.mediator.DialogBox;
 import com.designpattern.mediator.Exercise.SignUpDialogBox;
@@ -50,9 +54,22 @@ import com.designpattern.observer.SpreadSheet;
 import com.designpattern.visitor.*;
 import com.designpattern.visitor.exercise.*;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
+
+        /*Facade Pattern*/
+//        NotificationService service = new NotificationService();
+//        service.send("Hello facade", "target");
+//
+        TwitterService twitterService = new TwitterService("appkey", "secret");
+        List<Tweet> tweets = twitterService.getRecentTweets();
+        /*Facade Pattern*/
+
+
+//        -----------------------------------------------------------------
 
         /*Decorator Pattern*/
 //        storeCreditCard(new CompressedCloudStream(new EncryptedCloudStream(new CloudStream())));
