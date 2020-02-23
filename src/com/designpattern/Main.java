@@ -25,6 +25,10 @@ import com.designpattern.adapter.exercise.EmailClient;
 import com.designpattern.adapter.exercise.Gmail.GmailClient;
 import com.designpattern.adapter.exercise.GmailAdapter;
 import com.designpattern.adapter.exercise.Yahoo;
+import com.designpattern.bridge.AdvancedRemoteControl;
+import com.designpattern.bridge.RemoteControl;
+import com.designpattern.bridge.SamsungTv;
+import com.designpattern.bridge.SonyTv;
 import com.designpattern.chainOfResponsibility.*;
 import com.designpattern.chainOfResponsibility.Exercise.*;
 import com.designpattern.composite.Group;
@@ -41,6 +45,10 @@ import com.designpattern.facade.*;
 import com.designpattern.facade.exercise.Tweet;
 import com.designpattern.facade.exercise.TwitterClient;
 import com.designpattern.facade.exercise.TwitterService;
+import com.designpattern.flyweight.Point;
+import com.designpattern.flyweight.PointIconFactory;
+import com.designpattern.flyweight.PointService;
+import com.designpattern.flyweight.exercise.CellAttributeFactory;
 import com.designpattern.mediator.ArticleDialogBox;
 import com.designpattern.mediator.DialogBox;
 import com.designpattern.mediator.Exercise.SignUpDialogBox;
@@ -60,8 +68,33 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*Flyweight Pattern*/
+        /*Bridge Pattern*/
+//        RemoteControl rmtCtrl = new RemoteControl(new SonyTv());
+//        rmtCtrl.turnOn();
+//        rmtCtrl.turnOff();
+//
+//        AdvancedRemoteControl advRmtCtrl = new AdvancedRemoteControl(new SonyTv());
+//        advRmtCtrl.setChannel(34);
+//
+//        AdvancedRemoteControl samsungAdvRmtCtrl = new AdvancedRemoteControl(new SamsungTv());
+//        samsungAdvRmtCtrl.turnOn();
+//        samsungAdvRmtCtrl.setChannel(28);
+//        samsungAdvRmtCtrl.turnOff();
+        /*Bridge Pattern*/
 
+//        ----------------------------------------------------------------------
+
+        /*Flyweight Pattern*/
+//        PointService pointService = new PointService(new PointIconFactory());
+//        for (Point point: pointService.getPoints()) {
+//            point.draw();
+//        }
+//
+//        com.designpattern.flyweight.exercise.SpreadSheet sheet = new com.designpattern.flyweight.exercise.SpreadSheet( new CellAttributeFactory());
+//        sheet.setContent(0, 0, "Hello");
+//        sheet.setContent(1, 0, "World");
+//        sheet.setFontFamily(0, 0, "Arial");
+//        sheet.render();
         /*Flyweight Pattern*/
 
 //        ------------------------------------------------------------------
